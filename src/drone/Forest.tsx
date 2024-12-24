@@ -1,4 +1,4 @@
-import { Gltf } from "@react-three/drei";
+import { Gltf, Sparkles } from "@react-three/drei";
 
 function Tree({ position }: { position: [number, number, number] }) {
   return (
@@ -8,6 +8,14 @@ function Tree({ position }: { position: [number, number, number] }) {
       position={position}
     >
       <Gltf src={"/12151_Christmas_Tree_l1.gltf"} />
+      <Sparkles
+        count={10}
+        size={5}
+        scale={[100, 1, 200]}
+        noise={[50, 50, 5]}
+        position={[0, 0, 100]}
+        color={"red"}
+      />
     </group>
   );
 }
