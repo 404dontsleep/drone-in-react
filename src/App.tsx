@@ -38,7 +38,7 @@ function App() {
             <Drone />
             <ControlDrone />
             <RigidBody type='fixed' colliders={"hull"}>
-              <Box position={[0, 0, 0]} args={[10, 0.1, 10]}>
+              <Box position={[0, 0, 0]} args={[1000, 0.1, 1000]}>
                 {/* <meshNormalMaterial /> */}
                 <meshPhongMaterial />
               </Box>
