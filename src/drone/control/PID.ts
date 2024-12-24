@@ -44,21 +44,22 @@ function calculateControlOutput(
   let thrustOutput = pidThrust.compute(altitudeError, deltaTime);
   thrustOutput = Math.min(Math.max(thrustOutput, 0), 200);
 
-  const yawError = -sensor.rotation.yaw * 50;
+  const yawError = -sensor.rotation.yaw * 30;
   let yawOutput = yawController.compute(yawError, deltaTime);
   yawOutput = Math.min(Math.max(yawOutput, -20), 20);
 
-  const pitchError = -sensor.rotation.pitch * 50;
+  const pitchError = -sensor.rotation.pitch * 30;
   let pitchOutput = pitchController.compute(pitchError, deltaTime);
   pitchOutput = Math.min(Math.max(pitchOutput, -20), 20);
 
-  const rollError = -sensor.rotation.roll * 50;
+  const rollError = -sensor.rotation.roll * 30;
   let rollOutput = rollController.compute(rollError, deltaTime);
   rollOutput = Math.min(Math.max(rollOutput, -20), 20);
 
   // yawOutput = 0;
   // pitchOutput = 0;
   // rollOutput = 0;
+  // thrustOutput = 0;
   return {
     thrustOutput,
     yawOutput,
