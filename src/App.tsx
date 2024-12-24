@@ -12,12 +12,14 @@ import useEnvConfig from "./drone/config/useEnvConfig";
 import ControlDrone from "./drone/control/ControlDrone";
 import KeyboardControl from "./drone/control/KeyboardControl";
 import Graph from "./drone/Graph";
+import Forest from "./drone/Forest";
 function App() {
   const [env] = useEnvConfig();
   return (
     <KeyboardControl>
       <Canvas>
         <Graph />
+        <Forest />
         <GizmoHelper
           alignment='bottom-right' // widget alignment within scene
           margin={[80, 80]} // widget margins (X, Y)
@@ -28,7 +30,7 @@ function App() {
           />
           {/* alternative: <GizmoViewcube /> */}
         </GizmoHelper>
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={1} />
         <directionalLight position={[-10, 10, 0]} intensity={0.5} />
         <OrbitControls />
         <Suspense>

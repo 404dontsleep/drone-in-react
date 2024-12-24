@@ -33,7 +33,7 @@ const rollController = new PIDController(5, 1, 1);
 
 const target = {
   x: 0,
-  y: 3,
+  y: 5,
   z: 0,
 };
 function calculateControlOutput(
