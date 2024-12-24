@@ -7,4 +7,5 @@ export enum EKeyboardControlType {
   PitchDown = "pitch-down",
   RollLeft = "roll-left",
   RollRight = "roll-right",
+  WaterDrop = "water-drop",
 }

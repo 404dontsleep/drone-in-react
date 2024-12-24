@@ -10,6 +10,7 @@ const map: React.ComponentProps<typeof KeyboardControls>["map"] = [
   { name: EKeyboardControlType.YawRight, keys: ["d"] },
   { name: EKeyboardControlType.ThrustUp, keys: ["w"] },
   { name: EKeyboardControlType.ThrustDown, keys: ["s"] },
+  { name: EKeyboardControlType.WaterDrop, keys: [" "] },
 ];
 
 export default function KeyboardControl({

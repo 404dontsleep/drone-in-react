@@ -3,9 +3,10 @@ import useDroneSensor from "../config/useDroneSensor";
 import useControlDrone from "../config/useControlDrone";
 import useMotorConfig from "../config/useMotorConfig";
 import { useEffect } from "react";
-import { useKeyboardControls } from "@react-three/drei";
+import { SpotLight, useKeyboardControls } from "@react-three/drei";
 import { EKeyboardControlType } from "./EKeyboardControlType";
 import { calculateControlOutput } from "./PID";
+import { Euler, Object3D, Vector3 } from "three";
 export default function ControlDrone() {
   const [sensor] = useDroneSensor();
   const [control] = useControlDrone();
@@ -69,7 +70,25 @@ export default function ControlDrone() {
   );
 }
 function AngleHelper() {
-  return <></>;
+  const isDrop = useKeyboardControls(
+    (state) => state[EKeyboardControlType.WaterDrop]
+  );
+  const [sensor] = useDroneSensor();
+  const euler = new Euler(
+    sensor.rotation.pitch,
+    sensor.rotation.yaw,
+    sensor.rotation.roll
+  );
+  const pos = new Vector3(0, -1, 0).applyEuler(euler).add(sensor.position);
+  const object = new Object3D();
+  object.position.set(pos.x, pos.y - 2, pos.z);
+  return (
+    <>
+      {isDrop && (
+        <SpotLight position={pos} angle={0.1} color={"blue"} target={object} />
+      )}
+    </>
+  );
 }
 function KeyboardControl() {
   const isThrustUp = useKeyboardControls(
